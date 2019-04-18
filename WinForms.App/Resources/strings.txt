@@ -1,0 +1,18 @@
+# Top controls
+formCaption = Credit-track.
+labelLocalization = Localization
+comboBoxLocalization0 = English
+comboBoxLocalization1 = Russian
+labelViewType = View type
+comboBoxViewType0 = Table
+comboBoxViewType1 = Chart
+dataGridViewColumn0 = Number
+dataGridViewColumn1 = Pay
+dataGridViewColumn2 = Percent
+dataGridViewColumn3 = Remaining
+labelCreditAmount = CreditAmount
+labelAnnualInterest = Annual interest
+labelCreditTerm = Credit Term
+labelCreditTerm2 = months
+buttonCalc = Calculate
+messageErrorZeroInFields = Input values must be more than 0!

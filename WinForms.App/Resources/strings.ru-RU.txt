@@ -1,0 +1,18 @@
+# Top controls
+formCaption = Кредит-трек.
+labelLocalization = Язык
+comboBoxLocalization0 = Английский
+comboBoxLocalization1 = Русский
+labelViewType = Вид отображения
+comboBoxViewType0 = Таблица
+comboBoxViewType1 = Диаграмма
+dataGridViewColumn0 = Номер
+dataGridViewColumn1 = Платёж
+dataGridViewColumn2 = Процент
+dataGridViewColumn3 = Остаток
+labelCreditAmount = Сумма кредита
+labelAnnualInterest = Годовой процент
+labelCreditTerm = Срок кредита
+labelCreditTerm2 = мес.
+buttonCalc = Расчитать
+messageErrorZeroInFields = Входные значения должны быть больше 0!
