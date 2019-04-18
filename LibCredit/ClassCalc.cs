@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace LibCredit
 {
     public class ClassCalc
@@ -11,16 +13,10 @@ namespace LibCredit
         {
         }
 
-        public void Exec(decimal creditAamount, decimal annualInterest, decimal creditTerm)
+        public List<(int, decimal, decimal, decimal, decimal)> Exec(
+            decimal creditAamount, decimal annualInterest, decimal creditTerm)
         {
-            System.Console.WriteLine("Credit amount: " + creditAamount.ToString());
-            System.Console.WriteLine("Annual interest: " + annualInterest.ToString());
-            System.Console.WriteLine("Credit term: " + creditTerm.ToString());
-
-            System.Console.WriteLine("+--------+------------+------------+------------+------------+");
-            System.Console.WriteLine("| Number |       Pay  |   Percent  |    Credit  |  Remaining |");
-            System.Console.WriteLine("+--------+------------+------------+------------+------------+");
-
+            var result = new List<(int, decimal, decimal, decimal, decimal)>();
             decimal i = annualInterest / 100 / 12;
             decimal j = 0;
             decimal pay = 0;
@@ -33,32 +29,17 @@ namespace LibCredit
             for (int number = 1; number <= creditTerm; number++)
             {
                 j = (decimal)Math.Pow((double)(1 + i), (double)creditTerm);
-
                 pay = creditAamount * (i + (i / (j - 1)));
                 amountPay += pay;
-
                 percent = remaining * i;
                 amountPercent += percent;
-
                 credit = pay - percent;
                 amountCredit += credit;
-
                 remaining = creditAamount - amountCredit;
-
-                System.Console.WriteLine(string.Format("|{0,6}  | {1,9}  | {2,9}  | {3,9}  | {4,9}  |",
-                    number, 
-                    string.Format("{0:0.}", pay),
-                    string.Format("{0:0.}", percent),
-                    string.Format("{0:0.}", credit),
-                    string.Format("{0:0.}", remaining)));
+                result.Add((number, pay, percent, credit, remaining));
             }
-            System.Console.WriteLine("+--------+------------+------------+------------+------------+");
-            System.Console.WriteLine(string.Format("|        | {0,9}  | {1,9}  | {2,9}  |            |",
-
-                string.Format("{0:0.}", amountPay),
-                string.Format("{0:0.}", amountPercent),
-                string.Format("{0:0.}", amountCredit)));
-            System.Console.WriteLine("+--------+------------+------------+------------+------------+");
+            result.Add((-1, amountPay, amountPercent, amountCredit, -1));
+            return result;
         }
     }
 }
