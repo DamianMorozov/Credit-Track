@@ -10,6 +10,11 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LibCredit", "LibCredit\LibCredit.shproj", "{5A28885A-CCC8-463E-BF09-8FB586DF981D}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		LibCredit\LibCredit.projitems*{064e9fbc-d854-4f90-ae9d-c346904dba0d}*SharedItemsImports = 4
+		LibCredit\LibCredit.projitems*{5a28885a-ccc8-463e-bf09-8fb586df981d}*SharedItemsImports = 13
+		LibCredit\LibCredit.projitems*{b4175134-2a0d-4fd3-b1a8-9553c17c2b35}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

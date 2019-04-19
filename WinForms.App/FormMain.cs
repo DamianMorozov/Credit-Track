@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using LibCredit;
 
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
 namespace ExampleMSChart
@@ -62,6 +65,7 @@ namespace ExampleMSChart
             dataGridView.Columns[1].HeaderText = ResManager.GetString("dataGridViewColumn1");
             dataGridView.Columns[2].HeaderText = ResManager.GetString("dataGridViewColumn2");
             dataGridView.Columns[3].HeaderText = ResManager.GetString("dataGridViewColumn3");
+            dataGridView.Columns[4].HeaderText = ResManager.GetString("dataGridViewColumn4");
 
             labelCreditAmount.Text = ResManager.GetString("labelCreditAmount");
             labelAnnualInterest.Text = ResManager.GetString("labelAnnualInterest");
@@ -96,18 +100,59 @@ namespace ExampleMSChart
                 return;
             }
 
-            // Clear. 
-            dataGridView.Rows.Clear();
-            // Calc: Number, pay, percent, remaining
-            //var n = 1;
-            decimal i = creditTerm / 100 / 12;
-            decimal j = (decimal) Math.Pow((double)(1 + i), 1);
-            decimal pay = creditAamount * (i + (i / (j - 1)));
-            decimal percent = 0;
-            decimal remaining = 0;
-            for (int row = 1; row <= creditTerm; row++)
+            ClassCalc _calc = ClassCalc.Instance;
+            var records = _calc.Exec(creditAamount, annualInterest, creditTerm);
+
+            PrintBody(records);
+        }
+
+        private void PrintBody(List<(int, decimal, decimal, decimal, decimal)> records)
+        {
+            switch (comboBoxViewType.SelectedIndex)
             {
-                dataGridView.Rows.Add(new object[] { row, pay, percent, remaining });
+                // Chart
+                case 1:
+                    chart.Series.Clear();
+                    chart.Titles.Clear();
+                    chart.Palette = ChartColorPalette.Excel;
+                    //var seriesNumber = chart.Series.Add(ResManager.GetString("dataGridViewColumn0"));
+                    var seriesPay = chart.Series.Add(ResManager.GetString("dataGridViewColumn1"));
+                    var seriesPercent = chart.Series.Add(ResManager.GetString("dataGridViewColumn2"));
+                    var seriesCredit = chart.Series.Add(ResManager.GetString("dataGridViewColumn3"));
+                    //var seriesRemaining= chart.Series.Add(ResManager.GetString("dataGridViewColumn4"));
+                    foreach (var item in records)
+                    {
+                        if (item.Item1 > 0 && item.Item5 > 0)
+                        {
+                            //seriesNumber.Points.Add(new DataPoint(item.Item1, (double)item.Item1));
+                            seriesPay.Points.Add(new DataPoint(item.Item1, (double)item.Item2));
+                            seriesPercent.Points.Add(new DataPoint(item.Item1, (double)item.Item3));
+                            seriesCredit.Points.Add(new DataPoint(item.Item1, (double)item.Item4));
+                            //seriesRemaining.Points.Add(new DataPoint(item.Item1, (double)item.Item5));
+                        }
+                    }
+                    break;
+                // Table
+                default:
+                    dataGridView.Rows.Clear();
+                    dataGridView.Rows.Add(new object[] { null,
+                        records[records.Count - 1].Item2,
+                        records[records.Count - 1].Item3,
+                        records[records.Count - 1].Item4,
+                        null});
+                    foreach (var item in records)
+                    {
+                        if (item.Item1 > 0 && item.Item5 > 0)
+                        {
+                            dataGridView.Rows.Add(new object[] {
+                                item.Item1,
+                                item.Item2,
+                                item.Item3,
+                                item.Item4,
+                                item.Item5 });
+                        }
+                    }
+                    break;
             }
         }
     }
