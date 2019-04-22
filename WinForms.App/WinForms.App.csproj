@@ -93,7 +93,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\Generate resources.bat" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -104,12 +103,14 @@
   <ItemGroup>
     <None Include="Resources\strings.ru-RU.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\ResGen.exe" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>"c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.7.2 Tools\ResGen.exe" "$(ProjectDir)Resources\strings.txt"
+"c:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.7.2 Tools\ResGen.exe" "$(ProjectDir)Resources\strings.ru-RU.txt"
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

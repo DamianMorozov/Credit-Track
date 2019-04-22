@@ -112,14 +112,15 @@ namespace ExampleMSChart
             {
                 // Chart
                 case 1:
-                    chart.Series.Clear();
                     chart.Titles.Clear();
-                    chart.Palette = ChartColorPalette.Excel;
+                    chart.Series.Clear();
+                    chart.Palette = ChartColorPalette.Chocolate;
                     //var seriesNumber = chart.Series.Add(ResManager.GetString("dataGridViewColumn0"));
                     var seriesPay = chart.Series.Add(ResManager.GetString("dataGridViewColumn1"));
                     var seriesPercent = chart.Series.Add(ResManager.GetString("dataGridViewColumn2"));
                     var seriesCredit = chart.Series.Add(ResManager.GetString("dataGridViewColumn3"));
                     //var seriesRemaining= chart.Series.Add(ResManager.GetString("dataGridViewColumn4"));
+                    seriesCredit.ChartType = seriesPercent.ChartType = seriesPay.ChartType = SeriesChartType.RangeColumn;
                     foreach (var item in records)
                     {
                         if (item.Item1 > 0 && item.Item5 > 0)
