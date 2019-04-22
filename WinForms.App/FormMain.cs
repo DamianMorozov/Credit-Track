@@ -26,6 +26,7 @@ namespace ExampleMSChart
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Form1_Resize(sender, e);
             // Localization.
             comboBoxLocalization.SelectedIndex = 0;
             // View type.
@@ -67,12 +68,26 @@ namespace ExampleMSChart
             dataGridView.Columns[3].HeaderText = ResManager.GetString("dataGridViewColumn3");
             dataGridView.Columns[4].HeaderText = ResManager.GetString("dataGridViewColumn4");
 
-            labelCreditAmount.Text = ResManager.GetString("labelCreditAmount");
+            labelMoneyCost.Text = ResManager.GetString("labelMoneyCost");
+            labelMoneyOwn.Text = ResManager.GetString("labelMoneyOwn");
+            labelMoneyCredit.Text = ResManager.GetString("labelMoneyCredit");
+
             labelAnnualInterest.Text = ResManager.GetString("labelAnnualInterest");
             labelCreditTerm.Text = ResManager.GetString("labelCreditTerm");
             labelCreditTerm2.Text = ResManager.GetString("labelCreditTerm2");
 
             buttonCalc.Text = ResManager.GetString("buttonCalc");
+            buttonClear.Text = ResManager.GetString("buttonClear");
+
+            // Chart
+            if (chart.Series.Count > 0)
+            {
+                chart.Series[0].LegendText = ResManager.GetString("dataGridViewColumn1");
+                if (chart.Series.Count > 1)
+                    chart.Series[1].LegendText = ResManager.GetString("dataGridViewColumn2");
+                if (chart.Series.Count > 2)
+                    chart.Series[2].LegendText = ResManager.GetString("dataGridViewColumn3");
+            }
         }
 
         private void ComboBoxLocalization_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,7 +103,7 @@ namespace ExampleMSChart
 
         private void ButtonCalc_Click(object sender, EventArgs e)
         {
-            decimal creditAamount = fieldCreditAamount.Value;
+            decimal creditAamount = fieldMoneyCredit.Value;
             decimal annualInterest = fieldAnnualInterest.Value;
             decimal creditTerm = fieldCreditTerm.Value;
 
@@ -108,53 +123,88 @@ namespace ExampleMSChart
 
         private void PrintBody(List<(int, decimal, decimal, decimal, decimal)> records)
         {
-            switch (comboBoxViewType.SelectedIndex)
+            // Chart
+            PrintBodyChart(records);
+
+            // Table
+            PrintBodyTable(records);
+        }
+
+        private void PrintBodyChart(List<(int, decimal, decimal, decimal, decimal)> records)
+        {
+            chart.Titles.Clear();
+            chart.Series.Clear();
+            chart.Palette = ChartColorPalette.Chocolate;
+            //var seriesNumber = chart.Series.Add(ResManager.GetString("dataGridViewColumn0"));
+            var seriesPay = chart.Series.Add(ResManager.GetString("dataGridViewColumn1"));
+            var seriesPercent = chart.Series.Add(ResManager.GetString("dataGridViewColumn2"));
+            var seriesCredit = chart.Series.Add(ResManager.GetString("dataGridViewColumn3"));
+            //var seriesRemaining= chart.Series.Add(ResManager.GetString("dataGridViewColumn4"));
+            seriesCredit.ChartType = seriesPercent.ChartType = seriesPay.ChartType = SeriesChartType.RangeColumn;
+            foreach (var item in records)
             {
-                // Chart
-                case 1:
-                    chart.Titles.Clear();
-                    chart.Series.Clear();
-                    chart.Palette = ChartColorPalette.Chocolate;
-                    //var seriesNumber = chart.Series.Add(ResManager.GetString("dataGridViewColumn0"));
-                    var seriesPay = chart.Series.Add(ResManager.GetString("dataGridViewColumn1"));
-                    var seriesPercent = chart.Series.Add(ResManager.GetString("dataGridViewColumn2"));
-                    var seriesCredit = chart.Series.Add(ResManager.GetString("dataGridViewColumn3"));
-                    //var seriesRemaining= chart.Series.Add(ResManager.GetString("dataGridViewColumn4"));
-                    seriesCredit.ChartType = seriesPercent.ChartType = seriesPay.ChartType = SeriesChartType.RangeColumn;
-                    foreach (var item in records)
-                    {
-                        if (item.Item1 > 0 && item.Item5 > 0)
-                        {
-                            //seriesNumber.Points.Add(new DataPoint(item.Item1, (double)item.Item1));
-                            seriesPay.Points.Add(new DataPoint(item.Item1, (double)item.Item2));
-                            seriesPercent.Points.Add(new DataPoint(item.Item1, (double)item.Item3));
-                            seriesCredit.Points.Add(new DataPoint(item.Item1, (double)item.Item4));
-                            //seriesRemaining.Points.Add(new DataPoint(item.Item1, (double)item.Item5));
-                        }
-                    }
-                    break;
-                // Table
-                default:
-                    dataGridView.Rows.Clear();
-                    dataGridView.Rows.Add(new object[] { null,
-                        records[records.Count - 1].Item2,
-                        records[records.Count - 1].Item3,
-                        records[records.Count - 1].Item4,
-                        null});
-                    foreach (var item in records)
-                    {
-                        if (item.Item1 > 0 && item.Item5 > 0)
-                        {
-                            dataGridView.Rows.Add(new object[] {
-                                item.Item1,
-                                item.Item2,
-                                item.Item3,
-                                item.Item4,
-                                item.Item5 });
-                        }
-                    }
-                    break;
+                if (item.Item1 > 0 && item.Item5 > 0)
+                {
+                    //seriesNumber.Points.Add(new DataPoint(item.Item1, (double)item.Item1));
+                    seriesPay.Points.Add(new DataPoint(item.Item1, (double)item.Item2));
+                    seriesPercent.Points.Add(new DataPoint(item.Item1, (double)item.Item3));
+                    seriesCredit.Points.Add(new DataPoint(item.Item1, (double)item.Item4));
+                    //seriesRemaining.Points.Add(new DataPoint(item.Item1, (double)item.Item5));
+                }
             }
+        }
+
+        private void PrintBodyTable(List<(int, decimal, decimal, decimal, decimal)> records)
+        {
+            // Table
+            dataGridView.Rows.Clear();
+            dataGridView.Rows.Add(new object[] { null,
+                records[records.Count - 1].Item2,
+                records[records.Count - 1].Item3,
+                records[records.Count - 1].Item4,
+                null});
+            foreach (var item in records)
+            {
+                if (item.Item1 > 0 && item.Item5 > 0)
+                {
+                    dataGridView.Rows.Add(new object[] {
+                        item.Item1,
+                        item.Item2,
+                        item.Item3,
+                        item.Item4,
+                        item.Item5 });
+                }
+            }
+        }
+
+        private void FieldMoneyCost_ValueChanged(object sender, EventArgs e)
+        {
+            fieldMoneyCredit.Value = fieldMoneyCost.Value - fieldMoneyOwn.Value;
+        }
+
+        private void ButtonClear_Click(object sender, EventArgs e)
+        {
+            // Chart
+            chart.Titles.Clear();
+            chart.Series.Clear();
+            chart.Palette = ChartColorPalette.Chocolate;
+            // Table
+            dataGridView.Rows.Clear();
+            // Fields
+            fieldMoneyCost.Value = 100_000;
+            fieldMoneyOwn.Value = 50_000;
+            fieldAnnualInterest.Value = 10;
+            fieldCreditTerm.Value = 12;
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            buttonClear.Width = buttonCalc.Width = Width/2 - 25;
+            buttonClear.Left = Width / 2;
+
+            labelCreditTerm.Left = labelAnnualInterest.Left = labelViewType.Left = buttonClear.Left;
+            fieldCreditTerm.Left = fieldAnnualInterest.Left = comboBoxViewType.Left = buttonClear.Left + labelCreditTerm.Width + 5;
+            labelCreditTerm2.Left = labelAnnualInterest2.Left = buttonClear.Left + labelCreditTerm.Width + 75;
         }
     }
 }

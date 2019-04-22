@@ -1,5 +1,5 @@
 # Top controls
-formCaption = Credit-track.
+formCaption = Credit-track
 labelLocalization = Localization
 comboBoxLocalization0 = English
 comboBoxLocalization1 = Russian
@@ -11,9 +11,12 @@ dataGridViewColumn1 = Pay
 dataGridViewColumn2 = Percent
 dataGridViewColumn3 = Credit
 dataGridViewColumn4 = Remaining
-labelCreditAmount = CreditAmount
+labelMoneyCost = Cost money
+labelMoneyOwn = Own money
+labelMoneyCredit = Credit money
 labelAnnualInterest = Annual interest
 labelCreditTerm = Credit Term
 labelCreditTerm2 = months
 buttonCalc = Calculate
+buttonClear = Clear
 messageErrorZeroInFields = Input values must be more than 0!

@@ -1,5 +1,5 @@
 # Top controls
-formCaption = Кредит-трек.
+formCaption = Кредит-трек
 labelLocalization = Язык
 comboBoxLocalization0 = Английский
 comboBoxLocalization1 = Русский
@@ -11,9 +11,12 @@ dataGridViewColumn1 = Платёж
 dataGridViewColumn2 = Процент
 dataGridViewColumn3 = Долг
 dataGridViewColumn4 = Остаток
-labelCreditAmount = Сумма кредита
+labelMoneyCost = Стоимость покупки
+labelMoneyOwn = Собственные деньги
+labelMoneyCredit = Кредитные деньги
 labelAnnualInterest = Годовой процент
 labelCreditTerm = Срок кредита
 labelCreditTerm2 = мес.
 buttonCalc = Расчитать
+buttonClear = Очистить
 messageErrorZeroInFields = Входные значения должны быть больше 0!
