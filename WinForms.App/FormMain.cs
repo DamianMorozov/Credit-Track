@@ -74,8 +74,10 @@ namespace ExampleMSChart
 
             labelAnnualInterest.Text = ResManager.GetString("labelAnnualInterest");
             labelCreditTerm.Text = ResManager.GetString("labelCreditTerm");
-            labelCreditTerm2.Text = ResManager.GetString("labelCreditTerm2");
+            labelCreditTermMonths.Text = ResManager.GetString("labelCreditTermMonths");
+            labelCreditTermYears.Text = ResManager.GetString("labelCreditTermYears");
 
+            buttonCalcExe.Text = ResManager.GetString("buttonCalcExe");
             buttonCalc.Text = ResManager.GetString("buttonCalc");
             buttonClear.Text = ResManager.GetString("buttonClear");
 
@@ -105,7 +107,7 @@ namespace ExampleMSChart
         {
             decimal creditAamount = fieldMoneyCredit.Value;
             decimal annualInterest = fieldAnnualInterest.Value;
-            decimal creditTerm = fieldCreditTerm.Value;
+            decimal creditTerm = fieldCreditTermMonths.Value;
 
             // Check-list.
             if (creditAamount <= 0 || annualInterest <= 0 || creditTerm <= 0)
@@ -194,17 +196,36 @@ namespace ExampleMSChart
             fieldMoneyCost.Value = 100_000;
             fieldMoneyOwn.Value = 50_000;
             fieldAnnualInterest.Value = 10;
-            fieldCreditTerm.Value = 12;
+            fieldCreditTermMonths.Value = 12;
         }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            buttonClear.Width = buttonCalc.Width = Width/2 - 25;
-            buttonClear.Left = Width / 2;
+            //buttonClear.Width = buttonCalc.Width = Width/2 - 25;
+            //buttonClear.Left = Width / 2;
 
-            labelCreditTerm.Left = labelAnnualInterest.Left = labelViewType.Left = buttonClear.Left;
-            fieldCreditTerm.Left = fieldAnnualInterest.Left = comboBoxViewType.Left = buttonClear.Left + labelCreditTerm.Width + 5;
-            labelCreditTerm2.Left = labelAnnualInterest2.Left = buttonClear.Left + labelCreditTerm.Width + 75;
+            labelCreditTerm.Left = labelAnnualInterest.Left = labelViewType.Left = Width / 2;
+            fieldCreditTermYears.Left = fieldCreditTermMonths.Left = fieldAnnualInterest.Left = comboBoxViewType.Left = Width / 2 + labelCreditTerm.Width + 5;
+            labelCreditTermYears.Left = labelCreditTermMonths.Left = labelAnnualInterest2.Left = Width / 2 + labelCreditTerm.Width + 75;
+        }
+
+        private void FieldCreditTermMonths_ValueChanged(object sender, EventArgs e)
+        {
+            fieldCreditTermYears.Value = fieldCreditTermMonths.Value / 12;
+        }
+
+        private void ButtonCalcExe_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process pProcess = new System.Diagnostics.Process();
+            pProcess.StartInfo.FileName = @"Calc.exe";
+            pProcess.StartInfo.Arguments = "";
+            pProcess.StartInfo.UseShellExecute = false;
+            pProcess.StartInfo.RedirectStandardOutput = true;
+            pProcess.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            pProcess.StartInfo.CreateNoWindow = false;
+            pProcess.Start();
+            //string output = pProcess.StandardOutput.ReadToEnd(); //The output result
+            pProcess.WaitForExit();
         }
     }
 }

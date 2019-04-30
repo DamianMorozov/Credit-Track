@@ -28,18 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.comboBoxViewType = new System.Windows.Forms.ComboBox();
             this.labelViewType = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.ColumnNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelLocalization = new System.Windows.Forms.Label();
             this.comboBoxLocalization = new System.Windows.Forms.ComboBox();
             this.labelMoneyCredit = new System.Windows.Forms.Label();
@@ -47,8 +52,8 @@
             this.fieldAnnualInterest = new System.Windows.Forms.NumericUpDown();
             this.labelAnnualInterest = new System.Windows.Forms.Label();
             this.labelAnnualInterest2 = new System.Windows.Forms.Label();
-            this.labelCreditTerm2 = new System.Windows.Forms.Label();
-            this.fieldCreditTerm = new System.Windows.Forms.NumericUpDown();
+            this.labelCreditTermMonths = new System.Windows.Forms.Label();
+            this.fieldCreditTermMonths = new System.Windows.Forms.NumericUpDown();
             this.labelCreditTerm = new System.Windows.Forms.Label();
             this.buttonCalc = new System.Windows.Forms.Button();
             this.fieldMoneyCost = new System.Windows.Forms.NumericUpDown();
@@ -56,18 +61,17 @@
             this.fieldMoneyOwn = new System.Windows.Forms.NumericUpDown();
             this.labelMoneyOwn = new System.Windows.Forms.Label();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.ColumnNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelCreditTermYears = new System.Windows.Forms.Label();
+            this.fieldCreditTermYears = new System.Windows.Forms.NumericUpDown();
+            this.buttonCalcExe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fieldMoneyCredit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fieldAnnualInterest)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fieldCreditTerm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fieldCreditTermMonths)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fieldMoneyCost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fieldMoneyOwn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fieldCreditTermYears)).BeginInit();
             this.SuspendLayout();
             // 
             // chart
@@ -77,17 +81,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chart.BackColor = System.Drawing.SystemColors.Control;
             this.chart.BorderlineColor = System.Drawing.SystemColors.Control;
-            chartArea6.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea6);
-            legend6.Alignment = System.Drawing.StringAlignment.Center;
-            legend6.BackColor = System.Drawing.SystemColors.Control;
-            legend6.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend6.ForeColor = System.Drawing.Color.Blue;
-            legend6.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
-            legend6.MaximumAutoSize = 30F;
-            legend6.Name = "Legend1";
-            legend6.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
-            this.chart.Legends.Add(legend6);
+            chartArea2.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea2);
+            legend2.Alignment = System.Drawing.StringAlignment.Center;
+            legend2.BackColor = System.Drawing.SystemColors.Control;
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.ForeColor = System.Drawing.Color.Blue;
+            legend2.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
+            legend2.MaximumAutoSize = 30F;
+            legend2.Name = "Legend1";
+            legend2.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
+            this.chart.Legends.Add(legend2);
             this.chart.Location = new System.Drawing.Point(10, 145);
             this.chart.Margin = new System.Windows.Forms.Padding(4);
             this.chart.Name = "chart";
@@ -127,14 +131,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnNum,
@@ -147,6 +151,70 @@
             this.dataGridView.Size = new System.Drawing.Size(615, 455);
             this.dataGridView.TabIndex = 3;
             this.dataGridView.Visible = false;
+            // 
+            // ColumnNum
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Format = "N0";
+            dataGridViewCellStyle8.NullValue = null;
+            this.ColumnNum.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ColumnNum.FillWeight = 60F;
+            this.ColumnNum.HeaderText = "Number";
+            this.ColumnNum.MinimumWidth = 60;
+            this.ColumnNum.Name = "ColumnNum";
+            this.ColumnNum.ReadOnly = true;
+            this.ColumnNum.Width = 60;
+            // 
+            // ColumnPay
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Format = "C0";
+            dataGridViewCellStyle9.NullValue = null;
+            this.ColumnPay.DefaultCellStyle = dataGridViewCellStyle9;
+            this.ColumnPay.FillWeight = 120F;
+            this.ColumnPay.HeaderText = "Pay";
+            this.ColumnPay.MinimumWidth = 120;
+            this.ColumnPay.Name = "ColumnPay";
+            this.ColumnPay.ReadOnly = true;
+            this.ColumnPay.Width = 120;
+            // 
+            // ColumnPercent
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Format = "C0";
+            dataGridViewCellStyle10.NullValue = null;
+            this.ColumnPercent.DefaultCellStyle = dataGridViewCellStyle10;
+            this.ColumnPercent.FillWeight = 120F;
+            this.ColumnPercent.HeaderText = "Percent";
+            this.ColumnPercent.MinimumWidth = 120;
+            this.ColumnPercent.Name = "ColumnPercent";
+            this.ColumnPercent.ReadOnly = true;
+            this.ColumnPercent.Width = 120;
+            // 
+            // ColumnCredit
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.Format = "C0";
+            dataGridViewCellStyle11.NullValue = null;
+            this.ColumnCredit.DefaultCellStyle = dataGridViewCellStyle11;
+            this.ColumnCredit.FillWeight = 120F;
+            this.ColumnCredit.HeaderText = "Credit";
+            this.ColumnCredit.MinimumWidth = 120;
+            this.ColumnCredit.Name = "ColumnCredit";
+            this.ColumnCredit.Width = 120;
+            // 
+            // Column
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Format = "C0";
+            dataGridViewCellStyle12.NullValue = null;
+            this.Column.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Column.FillWeight = 120F;
+            this.Column.HeaderText = "Remaining";
+            this.Column.MinimumWidth = 120;
+            this.Column.Name = "Column";
+            this.Column.ReadOnly = true;
+            this.Column.Width = 120;
             // 
             // labelLocalization
             // 
@@ -186,7 +254,7 @@
             // 
             this.fieldMoneyCredit.Location = new System.Drawing.Point(175, 91);
             this.fieldMoneyCredit.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -242,34 +310,35 @@
             this.labelAnnualInterest2.Text = "%";
             this.labelAnnualInterest2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelCreditTerm2
+            // labelCreditTermMonths
             // 
-            this.labelCreditTerm2.AutoSize = true;
-            this.labelCreditTerm2.Location = new System.Drawing.Point(530, 70);
-            this.labelCreditTerm2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelCreditTerm2.Name = "labelCreditTerm2";
-            this.labelCreditTerm2.Size = new System.Drawing.Size(49, 15);
-            this.labelCreditTerm2.TabIndex = 13;
-            this.labelCreditTerm2.Text = "months";
-            this.labelCreditTerm2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelCreditTermMonths.AutoSize = true;
+            this.labelCreditTermMonths.Location = new System.Drawing.Point(530, 70);
+            this.labelCreditTermMonths.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCreditTermMonths.Name = "labelCreditTermMonths";
+            this.labelCreditTermMonths.Size = new System.Drawing.Size(49, 15);
+            this.labelCreditTermMonths.TabIndex = 13;
+            this.labelCreditTermMonths.Text = "months";
+            this.labelCreditTermMonths.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // fieldCreditTerm
+            // fieldCreditTermMonths
             // 
-            this.fieldCreditTerm.Location = new System.Drawing.Point(460, 65);
-            this.fieldCreditTerm.Maximum = new decimal(new int[] {
+            this.fieldCreditTermMonths.Location = new System.Drawing.Point(460, 65);
+            this.fieldCreditTermMonths.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.fieldCreditTerm.Name = "fieldCreditTerm";
-            this.fieldCreditTerm.Size = new System.Drawing.Size(65, 23);
-            this.fieldCreditTerm.TabIndex = 12;
-            this.fieldCreditTerm.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.fieldCreditTerm.Value = new decimal(new int[] {
+            this.fieldCreditTermMonths.Name = "fieldCreditTermMonths";
+            this.fieldCreditTermMonths.Size = new System.Drawing.Size(65, 23);
+            this.fieldCreditTermMonths.TabIndex = 12;
+            this.fieldCreditTermMonths.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.fieldCreditTermMonths.Value = new decimal(new int[] {
             12,
             0,
             0,
             0});
+            this.fieldCreditTermMonths.ValueChanged += new System.EventHandler(this.FieldCreditTermMonths_ValueChanged);
             // 
             // labelCreditTerm
             // 
@@ -283,9 +352,11 @@
             // 
             // buttonCalc
             // 
-            this.buttonCalc.Location = new System.Drawing.Point(10, 120);
+            this.buttonCalc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCalc.Location = new System.Drawing.Point(218, 120);
             this.buttonCalc.Name = "buttonCalc";
-            this.buttonCalc.Size = new System.Drawing.Size(300, 23);
+            this.buttonCalc.Size = new System.Drawing.Size(200, 23);
             this.buttonCalc.TabIndex = 14;
             this.buttonCalc.Text = "Calculate";
             this.buttonCalc.UseVisualStyleBackColor = true;
@@ -295,7 +366,7 @@
             // 
             this.fieldMoneyCost.Location = new System.Drawing.Point(175, 40);
             this.fieldMoneyCost.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -325,7 +396,7 @@
             // 
             this.fieldMoneyOwn.Location = new System.Drawing.Point(175, 65);
             this.fieldMoneyOwn.Maximum = new decimal(new int[] {
-            10000000,
+            100000000,
             0,
             0,
             0});
@@ -354,77 +425,54 @@
             // buttonClear
             // 
             this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClear.Location = new System.Drawing.Point(325, 120);
+            this.buttonClear.Location = new System.Drawing.Point(425, 120);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(300, 23);
+            this.buttonClear.Size = new System.Drawing.Size(200, 23);
             this.buttonClear.TabIndex = 19;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.ButtonClear_Click);
             // 
-            // ColumnNum
+            // labelCreditTermYears
             // 
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle32.Format = "N0";
-            dataGridViewCellStyle32.NullValue = null;
-            this.ColumnNum.DefaultCellStyle = dataGridViewCellStyle32;
-            this.ColumnNum.FillWeight = 60F;
-            this.ColumnNum.HeaderText = "Number";
-            this.ColumnNum.MinimumWidth = 60;
-            this.ColumnNum.Name = "ColumnNum";
-            this.ColumnNum.ReadOnly = true;
-            this.ColumnNum.Width = 60;
+            this.labelCreditTermYears.AutoSize = true;
+            this.labelCreditTermYears.Location = new System.Drawing.Point(530, 95);
+            this.labelCreditTermYears.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCreditTermYears.Name = "labelCreditTermYears";
+            this.labelCreditTermYears.Size = new System.Drawing.Size(42, 15);
+            this.labelCreditTermYears.TabIndex = 22;
+            this.labelCreditTermYears.Text = "years";
+            this.labelCreditTermYears.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // ColumnPay
+            // fieldCreditTermYears
             // 
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle33.Format = "C0";
-            dataGridViewCellStyle33.NullValue = null;
-            this.ColumnPay.DefaultCellStyle = dataGridViewCellStyle33;
-            this.ColumnPay.FillWeight = 120F;
-            this.ColumnPay.HeaderText = "Pay";
-            this.ColumnPay.MinimumWidth = 120;
-            this.ColumnPay.Name = "ColumnPay";
-            this.ColumnPay.ReadOnly = true;
-            this.ColumnPay.Width = 120;
+            this.fieldCreditTermYears.DecimalPlaces = 2;
+            this.fieldCreditTermYears.Location = new System.Drawing.Point(460, 90);
+            this.fieldCreditTermYears.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.fieldCreditTermYears.Name = "fieldCreditTermYears";
+            this.fieldCreditTermYears.ReadOnly = true;
+            this.fieldCreditTermYears.Size = new System.Drawing.Size(65, 23);
+            this.fieldCreditTermYears.TabIndex = 21;
+            this.fieldCreditTermYears.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.fieldCreditTermYears.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // ColumnPercent
+            // buttonCalcExe
             // 
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle34.Format = "C0";
-            dataGridViewCellStyle34.NullValue = null;
-            this.ColumnPercent.DefaultCellStyle = dataGridViewCellStyle34;
-            this.ColumnPercent.FillWeight = 120F;
-            this.ColumnPercent.HeaderText = "Percent";
-            this.ColumnPercent.MinimumWidth = 120;
-            this.ColumnPercent.Name = "ColumnPercent";
-            this.ColumnPercent.ReadOnly = true;
-            this.ColumnPercent.Width = 120;
-            // 
-            // ColumnCredit
-            // 
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle35.Format = "C0";
-            dataGridViewCellStyle35.NullValue = null;
-            this.ColumnCredit.DefaultCellStyle = dataGridViewCellStyle35;
-            this.ColumnCredit.FillWeight = 120F;
-            this.ColumnCredit.HeaderText = "Credit";
-            this.ColumnCredit.MinimumWidth = 120;
-            this.ColumnCredit.Name = "ColumnCredit";
-            this.ColumnCredit.Width = 120;
-            // 
-            // Column
-            // 
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle36.Format = "C0";
-            dataGridViewCellStyle36.NullValue = null;
-            this.Column.DefaultCellStyle = dataGridViewCellStyle36;
-            this.Column.FillWeight = 120F;
-            this.Column.HeaderText = "Remaining";
-            this.Column.MinimumWidth = 120;
-            this.Column.Name = "Column";
-            this.Column.ReadOnly = true;
-            this.Column.Width = 120;
+            this.buttonCalcExe.Location = new System.Drawing.Point(10, 120);
+            this.buttonCalcExe.Name = "buttonCalcExe";
+            this.buttonCalcExe.Size = new System.Drawing.Size(200, 23);
+            this.buttonCalcExe.TabIndex = 23;
+            this.buttonCalcExe.Text = "Calc.exe";
+            this.buttonCalcExe.UseVisualStyleBackColor = true;
+            this.buttonCalcExe.Click += new System.EventHandler(this.ButtonCalcExe_Click);
             // 
             // Form1
             // 
@@ -432,14 +480,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(634, 611);
+            this.Controls.Add(this.buttonCalcExe);
+            this.Controls.Add(this.labelCreditTermYears);
+            this.Controls.Add(this.fieldCreditTermYears);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.fieldMoneyOwn);
             this.Controls.Add(this.labelMoneyOwn);
             this.Controls.Add(this.fieldMoneyCost);
             this.Controls.Add(this.labelMoneyCost);
             this.Controls.Add(this.buttonCalc);
-            this.Controls.Add(this.labelCreditTerm2);
-            this.Controls.Add(this.fieldCreditTerm);
+            this.Controls.Add(this.labelCreditTermMonths);
+            this.Controls.Add(this.fieldCreditTermMonths);
             this.Controls.Add(this.labelCreditTerm);
             this.Controls.Add(this.labelAnnualInterest2);
             this.Controls.Add(this.fieldAnnualInterest);
@@ -464,9 +515,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fieldMoneyCredit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fieldAnnualInterest)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fieldCreditTerm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fieldCreditTermMonths)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fieldMoneyCost)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fieldMoneyOwn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fieldCreditTermYears)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,8 +537,8 @@
         private System.Windows.Forms.NumericUpDown fieldAnnualInterest;
         private System.Windows.Forms.Label labelAnnualInterest;
         private System.Windows.Forms.Label labelAnnualInterest2;
-        private System.Windows.Forms.Label labelCreditTerm2;
-        private System.Windows.Forms.NumericUpDown fieldCreditTerm;
+        private System.Windows.Forms.Label labelCreditTermMonths;
+        private System.Windows.Forms.NumericUpDown fieldCreditTermMonths;
         private System.Windows.Forms.Label labelCreditTerm;
         private System.Windows.Forms.Button buttonCalc;
         private System.Windows.Forms.NumericUpDown fieldMoneyCost;
@@ -499,6 +551,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCredit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column;
+        private System.Windows.Forms.Label labelCreditTermYears;
+        private System.Windows.Forms.NumericUpDown fieldCreditTermYears;
+        private System.Windows.Forms.Button buttonCalcExe;
     }
 }
 
