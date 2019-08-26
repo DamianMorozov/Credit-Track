@@ -1,11 +1,12 @@
 # Top controls
-formCaption = Credit-track
+formCaption = Credit-track.
 labelLocalization = Localization
 comboBoxLocalization0 = English
 comboBoxLocalization1 = Russian
 labelViewType = View type
 comboBoxViewType0 = Table
 comboBoxViewType1 = Chart
+labelSettings = Settings
 dataGridViewColumn0 = Number
 dataGridViewColumn1 = Pay
 dataGridViewColumn2 = Percent
@@ -17,7 +18,9 @@ labelMoneyCredit = Credit money
 labelAnnualInterest = Annual interest
 labelCreditTerm = Credit Term
 labelCreditTermMonths = months
+labelCreditTermMonthsFull = Credit term (months)
 labelCreditTermYears = years
+labelCreditTermYearsFull = Credit term (years)
 buttonCalcExe = Calc.exe
 buttonCalc = Calculate
 buttonClear = Clear

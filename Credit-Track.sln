@@ -9,11 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console.App", "Console.App\
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LibCredit", "LibCredit\LibCredit.shproj", "{5A28885A-CCC8-463E-BF09-8FB586DF981D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DXApp", "DXApp\DXApp.csproj", "{EDF9FA90-EEB1-405F-9E7E-B80A399A9552}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		LibCredit\LibCredit.projitems*{064e9fbc-d854-4f90-ae9d-c346904dba0d}*SharedItemsImports = 4
 		LibCredit\LibCredit.projitems*{5a28885a-ccc8-463e-bf09-8fb586df981d}*SharedItemsImports = 13
 		LibCredit\LibCredit.projitems*{b4175134-2a0d-4fd3-b1a8-9553c17c2b35}*SharedItemsImports = 4
+		LibCredit\LibCredit.projitems*{edf9fa90-eeb1-405f-9e7e-b80a399a9552}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +31,10 @@ Global
 		{B4175134-2A0D-4FD3-B1A8-9553C17C2B35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4175134-2A0D-4FD3-B1A8-9553C17C2B35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4175134-2A0D-4FD3-B1A8-9553C17C2B35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDF9FA90-EEB1-405F-9E7E-B80A399A9552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF9FA90-EEB1-405F-9E7E-B80A399A9552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF9FA90-EEB1-405F-9E7E-B80A399A9552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF9FA90-EEB1-405F-9E7E-B80A399A9552}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

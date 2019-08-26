@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
+using DevExpress.UserSkins;
+using DevExpress.Skins;
 
-namespace WinForms.App
+namespace DXApp
 {
     internal static class Program
     {
@@ -13,6 +15,9 @@ namespace WinForms.App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            BonusSkins.Register();
+            SkinManager.EnableFormSkins();
             Application.Run(new FormMain());
         }
     }

@@ -11,4 +11,8 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)ClassCalc.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\strings.ru-RU.txt" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\strings.txt" />
+  </ItemGroup>
 </Project>
