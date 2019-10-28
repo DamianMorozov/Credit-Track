@@ -1,4 +1,5 @@
 ﻿using LibCredit;
+using LibWin;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,16 +17,17 @@ namespace WinForms.App
     {
         #region Private fields and properties
 
+        private Process _proc = Process.Instance;
         private ResourceManager ResManager { get; set; }
 
         #endregion
+
+        #region Form methods
 
         public FormMain()
         {
             InitializeComponent();
         }
-
-        #region Private methods
 
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -34,6 +36,17 @@ namespace WinForms.App
             comboBoxLocalization.SelectedIndex = CultureInfo.CurrentCulture.Name == "ru-RU" ? 1 : 0;
             // View type.
             comboBoxViewType.SelectedIndex = 0;
+            // Clear.
+            ButtonClear_Click(sender, e);
+        }
+
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            //buttonClear.Width = buttonCalc.Width = Width/2 - 25;
+            //buttonClear.Left = Width / 2;
+            labelCreditTerm.Left = labelAnnualInterest.Left = labelViewType.Left = Width / 2;
+            fieldCreditTermYears.Left = fieldCreditTermMonths.Left = fieldAnnualInterest.Left = comboBoxViewType.Left = Width / 2 + labelCreditTerm.Width + 5;
+            labelCreditTermYears.Left = labelCreditTermMonths.Left = labelAnnualInterest2.Left = Width / 2 + labelCreditTerm.Width + 75;
         }
 
         private void SetLocalization(int localization)
@@ -92,6 +105,10 @@ namespace WinForms.App
             }
         }
 
+        #endregion
+
+        #region Private methods
+
         private void ComboBoxLocalization_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetLocalization(((ComboBox)sender).SelectedIndex);
@@ -99,13 +116,12 @@ namespace WinForms.App
 
         private void ComboBoxViewType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chart.Visible = comboBoxViewType.SelectedIndex != 0;
-            dataGridView.Visible = comboBoxViewType.SelectedIndex == 0;
+            dataGridView.Visible = !(chart.Visible = comboBoxViewType.SelectedIndex != 0);
         }
 
         private void ButtonCalc_Click(object sender, EventArgs e)
         {
-            var creditAmount = fieldMoneyCost.Value;
+            var creditAmount = fieldMoneyCredit.Value;
             var annualInterest = fieldAnnualInterest.Value;
             var creditTerm = fieldCreditTermMonths.Value;
 
@@ -118,12 +134,12 @@ namespace WinForms.App
             }
 
             var calc = ClassCalc.Instance;
-            var records = calc.Exec(creditAmount, annualInterest, creditTerm);
+            var records = calc.Exec(creditAmount, annualInterest, creditTerm, true);
 
             PrintBody(records);
         }
 
-        private void PrintBody(IReadOnlyList<(int, decimal, decimal, decimal, decimal)> records)
+        private void PrintBody(IReadOnlyList<ClassRecord> records)
         {
             switch (comboBoxViewType.SelectedIndex)
             {
@@ -151,34 +167,36 @@ namespace WinForms.App
                     //var seriesRemaining= chart.Series.Add(ResManager.GetString("dataGridViewColumn4"));
                     foreach (var item in records)
                     {
-                        if (item.Item1 > 0 && item.Item5 > 0)
+                        if (item.Number > 0 && item.Remaining > 0)
                         {
-                            //seriesNumber.Points.Add(new DataPoint(item.Item1, (double)item.Item1));
-                            seriesPay?.Points.Add(new DataPoint(item.Item1, (double)item.Item2));
-                            seriesPercent?.Points.Add(new DataPoint(item.Item1, (double)item.Item3));
-                            seriesCredit?.Points.Add(new DataPoint(item.Item1, (double)item.Item4));
-                            //seriesRemaining.Points.Add(new DataPoint(item.Item1, (double)item.Item5));
+                            //seriesNumber.Points.Add(new DataPoint(item.Number, (double)item.Number));
+                            seriesPay?.Points.Add(new DataPoint(item.Number, (double)item.Pay));
+                            seriesPercent?.Points.Add(new DataPoint(item.Number, (double)item.Percent));
+                            seriesCredit?.Points.Add(new DataPoint(item.Number, (double)item.Credit));
+                            //seriesRemaining.Points.Add(new DataPoint(item.Number, (double)item.Remaining));
                         }
                     }
                     break;
                 // Table
                 default:
                     dataGridView.Rows.Clear();
+                    // Summary.
                     dataGridView.Rows.Add(new object[] { null,
-                        records[records.Count - 1].Item2,
-                        records[records.Count - 1].Item3,
-                        records[records.Count - 1].Item4,
+                        records[records.Count - 1].Pay,
+                        records[records.Count - 1].Percent,
+                        records[records.Count - 1].Credit,
                         null});
+                    // Items.
                     foreach (var item in records)
                     {
-                        if (item.Item1 > 0 && item.Item5 > 0)
+                        if (item.Number > 0 && item.Remaining > 0)
                         {
                             dataGridView.Rows.Add(new object[] {
-                                item.Item1,
-                                item.Item2,
-                                item.Item3,
-                                item.Item4,
-                                item.Item5 });
+                                item.Number,
+                                item.Pay,
+                                item.Percent,
+                                item.Credit,
+                                item.Remaining });
                         }
                     }
                     break;
@@ -205,16 +223,6 @@ namespace WinForms.App
             fieldCreditTermMonths.Value = 12;
         }
 
-        private void FormMain_Resize(object sender, EventArgs e)
-        {
-            //buttonClear.Width = buttonCalc.Width = Width/2 - 25;
-            //buttonClear.Left = Width / 2;
-
-            labelCreditTerm.Left = labelAnnualInterest.Left = labelViewType.Left = Width / 2;
-            fieldCreditTermYears.Left = fieldCreditTermMonths.Left = fieldAnnualInterest.Left = comboBoxViewType.Left = Width / 2 + labelCreditTerm.Width + 5;
-            labelCreditTermYears.Left = labelCreditTermMonths.Left = labelAnnualInterest2.Left = Width / 2 + labelCreditTerm.Width + 75;
-        }
-
         private void FieldCreditTermMonths_ValueChanged(object sender, EventArgs e)
         {
             fieldCreditTermYears.Value = fieldCreditTermMonths.Value / 12;
@@ -222,21 +230,7 @@ namespace WinForms.App
 
         private void ButtonCalcExe_Click(object sender, EventArgs e)
         {
-            var pProcess = new System.Diagnostics.Process
-            {
-                StartInfo =
-                {
-                    FileName = @"Calc.exe",
-                    Arguments = "",
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden,
-                    CreateNoWindow = false
-                }
-            };
-            pProcess.Start();
-            //string output = pProcess.StandardOutput.ReadToEnd(); //The output result
-            pProcess.WaitForExit();
+            _proc.Run("calc");
         }
 
         #endregion

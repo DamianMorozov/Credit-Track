@@ -19,7 +19,7 @@ namespace Console.App
             PrintCaption(creditAamount, annualInterest, creditTerm);
 
             ClassCalc _calc = ClassCalc.Instance;
-            var records = _calc.Exec(creditAamount, annualInterest, creditTerm);
+            var records = _calc.Exec(creditAamount, annualInterest, creditTerm, true);
 
             PrintBody(records);
 
@@ -57,23 +57,26 @@ namespace Console.App
 
         }
 
-        private static void PrintBody(List<(int, decimal, decimal, decimal, decimal)> records)
+        private static void PrintBody(List<ClassRecord> records)
         {
-            System.Console.WriteLine(string.Format("|        | {0,9}  | {1,9}  | {2,9}  |            |",
-                string.Format("{0:0.}", records[records.Count - 1].Item2),
-                string.Format("{0:0.}", records[records.Count - 1].Item3),
-                string.Format("{0:0.}", records[records.Count - 1].Item4)));
-            System.Console.WriteLine("+--------+------------+------------+------------+------------+");
             foreach (var item in records)
             {
-                if (item.Item1 > 0 && item.Item5 > 0)
+                if (item.Number == -1)
+                {
+                    System.Console.WriteLine(string.Format("|        | {0,9}  | {1,9}  | {2,9}  |            |",
+                        string.Format("{0:0.}", item.Pay),
+                        string.Format("{0:0.}", item.Percent),
+                        string.Format("{0:0.}", item.Credit)));
+                    System.Console.WriteLine("+--------+------------+------------+------------+------------+");
+                }
+                else
                 {
                     System.Console.WriteLine(string.Format("|{0,6}  | {1,9}  | {2,9}  | {3,9}  | {4,9}  |",
-                        item.Item1,
-                        string.Format("{0:0.}", item.Item2),
-                        string.Format("{0:0.}", item.Item3),
-                        string.Format("{0:0.}", item.Item4),
-                        string.Format("{0:0.}", item.Item5)));
+                        item.Number,
+                        string.Format("{0:0.}", item.Pay),
+                        string.Format("{0:0.}", item.Percent),
+                        string.Format("{0:0.}", item.Credit),
+                        string.Format("{0:0.}", item.Remaining)));
                 }
             }
             System.Console.WriteLine("+--------+------------+------------+------------+------------+");
