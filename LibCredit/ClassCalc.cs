@@ -46,23 +46,23 @@ namespace LibCredit
             // Summary.
             if (useFirstSummary)
                 return new List<ClassRecord>()
-                    { new ClassRecord(-1, amountPay, amountPercent, amountCredit, -1) }.
+                    { new ClassRecord(null, amountPay, amountPercent, amountCredit, null) }.
                     Union(result).ToList();
 
-            result.Add((new ClassRecord(-1, amountPay, amountPercent, amountCredit, -1)));
+            result.Add((new ClassRecord(null, amountPay, amountPercent, amountCredit, null)));
             return result;
         }
     }
 
     public class ClassRecord
     {
-        public int Number { get; set; }
+        public int? Number { get; set; }
         public decimal Pay { get; set; }
         public decimal Percent { get; set; }
         public decimal Credit { get; set; }
-        public decimal Remaining { get; set; }
+        public decimal? Remaining { get; set; }
 
-        public ClassRecord(int number, decimal pay, decimal percent, decimal credit, decimal remaining)
+        public ClassRecord(int? number, decimal pay, decimal percent, decimal credit, decimal? remaining)
         {
             Number = number;
             Pay = pay;

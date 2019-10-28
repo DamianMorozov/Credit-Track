@@ -145,61 +145,67 @@ namespace WinForms.App
             {
                 // Chart
                 case 1:
-                    chart.Series.Clear();
-                    chart.Titles.Clear();
-                    chart.Palette = ChartColorPalette.Excel;
-                    //var seriesNumber = chart.Series.Add(ResManager.GetString("dataGridViewColumn0"));
-                    Series seriesPay = null;
-                    Series seriesPercent = null;
-                    Series seriesCredit = null;
-                    if (ResManager != null)
-                    {
-                        var name1 = ResManager.GetString("dataGridViewColumn1");
-                        if (!string.IsNullOrEmpty(name1))
-                            seriesPay = chart.Series.Add(name1);
-                        var name2 = ResManager.GetString("dataGridViewColumn2");
-                        if (!string.IsNullOrEmpty(name2))
-                            seriesPercent = chart.Series.Add(name2);
-                        var name3 = ResManager.GetString("dataGridViewColumn3");
-                        if (!string.IsNullOrEmpty(name3))
-                            seriesCredit = chart.Series.Add(name3);
-                    }
-                    //var seriesRemaining= chart.Series.Add(ResManager.GetString("dataGridViewColumn4"));
-                    foreach (var item in records)
-                    {
-                        if (item.Number > 0 && item.Remaining > 0)
-                        {
-                            //seriesNumber.Points.Add(new DataPoint(item.Number, (double)item.Number));
-                            seriesPay?.Points.Add(new DataPoint(item.Number, (double)item.Pay));
-                            seriesPercent?.Points.Add(new DataPoint(item.Number, (double)item.Percent));
-                            seriesCredit?.Points.Add(new DataPoint(item.Number, (double)item.Credit));
-                            //seriesRemaining.Points.Add(new DataPoint(item.Number, (double)item.Remaining));
-                        }
-                    }
+                    PrintBodyChart(records);
                     break;
                 // Table
                 default:
-                    dataGridView.Rows.Clear();
-                    // Summary.
-                    dataGridView.Rows.Add(new object[] { null,
-                        records[records.Count - 1].Pay,
-                        records[records.Count - 1].Percent,
-                        records[records.Count - 1].Credit,
-                        null});
-                    // Items.
-                    foreach (var item in records)
-                    {
-                        if (item.Number > 0 && item.Remaining > 0)
-                        {
-                            dataGridView.Rows.Add(new object[] {
-                                item.Number,
-                                item.Pay,
-                                item.Percent,
-                                item.Credit,
-                                item.Remaining });
-                        }
-                    }
+                    PrintBodyTable(records);
                     break;
+            }
+        }
+
+        private void PrintBodyTable(IReadOnlyList<ClassRecord> records)
+        {
+            dataGridView.Rows.Clear();
+            // Summary.
+            dataGridView.Rows.Add(new object[] { null,
+                records[records.Count - 1].Pay,
+                records[records.Count - 1].Percent,
+                records[records.Count - 1].Credit,
+                null});
+            // Items.
+            foreach (var item in records)
+            {
+                if (item.Number > 0 && item.Remaining > 0)
+                {
+                    dataGridView.Rows.Add(new object[] {
+                        item.Number,
+                        item.Pay,
+                        item.Percent,
+                        item.Credit,
+                        item.Remaining });
+                }
+            }
+        }
+
+        private void PrintBodyChart(IReadOnlyList<ClassRecord> records)
+        {
+            chart.Series.Clear();
+            chart.Titles.Clear();
+            chart.Palette = ChartColorPalette.Excel;
+            Series seriesPay = null;
+            Series seriesPercent = null;
+            Series seriesCredit = null;
+            if (ResManager != null)
+            {
+                var name1 = ResManager.GetString("dataGridViewColumn1");
+                if (!string.IsNullOrEmpty(name1))
+                    seriesPay = chart.Series.Add(name1);
+                var name2 = ResManager.GetString("dataGridViewColumn2");
+                if (!string.IsNullOrEmpty(name2))
+                    seriesPercent = chart.Series.Add(name2);
+                var name3 = ResManager.GetString("dataGridViewColumn3");
+                if (!string.IsNullOrEmpty(name3))
+                    seriesCredit = chart.Series.Add(name3);
+            }
+            foreach (var item in records)
+            {
+                if (item.Number > 0 && item.Remaining > 0)
+                {
+                    seriesPay?.Points.Add(new DataPoint((int)item.Number, (double)item.Pay));
+                    seriesPercent?.Points.Add(new DataPoint((int)item.Number, (double)item.Percent));
+                    seriesCredit?.Points.Add(new DataPoint((int)item.Number, (double)item.Credit));
+                }
             }
         }
 
