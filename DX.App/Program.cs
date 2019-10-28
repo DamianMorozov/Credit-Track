@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using DevExpress.UserSkins;
 using DevExpress.Skins;
 
-namespace DXApp
+namespace DX.App
 {
     internal static class Program
     {

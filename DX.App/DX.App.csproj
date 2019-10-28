@@ -8,10 +8,11 @@
     <ProjectGuid>{EDF9FA90-EEB1-405F-9E7E-B80A399A9552}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DXApp</RootNamespace>
-    <AssemblyName>DXApp</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <RootNamespace>DX.App</RootNamespace>
+    <AssemblyName>DX.App</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,7 +46,12 @@
     <Reference Include="DevExpress.XtraCharts.v19.1.UI, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v19.1.Wizard, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v19.1" />
+    <Reference Include="DevExpress.XtraGrid.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="LibWin">
+      <HintPath>..\LibWin\bin\Debug\LibWin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -78,9 +84,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Resources\strings.resources" />
     <EmbeddedResource Include="Resources\strings.ru-RU.resources" />
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,8 +102,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\LibCredit\LibCredit.projitems" Label="Shared" Condition="Exists('..\LibCredit\LibCredit.projitems')" />
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)LibCredit\Resources\ResGen.exe" "$(SolutionDir)LibCredit\Resources\strings.txt" "$(SolutionDir)DXApp\Resources\strings.resources"
-"$(SolutionDir)LibCredit\Resources\ResGen.exe" "$(SolutionDir)LibCredit\Resources\strings.ru-RU.txt" "$(SolutionDir)DXApp\Resources\strings.ru-RU.resources"
+    <PreBuildEvent>"$(SolutionDir)LibCredit\Resources\ResGen.exe" "$(SolutionDir)LibCredit\Resources\strings.txt" "$(SolutionDir)DX.App\Resources\strings.resources"
+"$(SolutionDir)LibCredit\Resources\ResGen.exe" "$(SolutionDir)LibCredit\Resources\strings.ru-RU.txt" "$(SolutionDir)DX.App\Resources\strings.ru-RU.resources"
 </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

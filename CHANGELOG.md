@@ -2,37 +2,36 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [0.1.41] - 2019-10-28
+## [0.2.22] - 2019-10-28
 ### Updated
 - Console.App
-- LibCredit project
+- LibCredit
 - WinForms.App
 ### Added
-- LibWin project
+- LibWin
+- DX.App
 
 ## [0.1.01] - 2019-08-26
 ### Updated
-- WinForms.App project
-### Added
-- DXApp project
+- WinForms.App
 
 ## [0.0.35] - 2019-04-30
 ### Updated
-- WinForms.App project
+- WinForms.App
 
 ## [0.0.32] - 2019-04-22
 ### Updated
-- WinForms.App project
+- WinForms.App
 
 ## [0.0.30] - 2019-04-19
 ### Updated
-- WinForms.App project
+- WinForms.App
 
 ## [0.0.22] - 2019-04-18
 ### Added
-- Console.App project
-- LibCredit project
-- WinForms.App project
+- Console.App
+- LibCredit
+- WinForms.App
 - .gitattributes
 - .gitignore
 - CHANGELOG.md

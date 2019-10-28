@@ -183,26 +183,22 @@ namespace WinForms.App
             chart.Series.Clear();
             chart.Titles.Clear();
             chart.Palette = ChartColorPalette.Excel;
-            Series seriesPay = null;
+
             Series seriesPercent = null;
             Series seriesCredit = null;
             if (ResManager != null)
             {
-                var name1 = ResManager.GetString("dataGridViewColumn1");
-                if (!string.IsNullOrEmpty(name1))
-                    seriesPay = chart.Series.Add(name1);
-                var name2 = ResManager.GetString("dataGridViewColumn2");
-                if (!string.IsNullOrEmpty(name2))
-                    seriesPercent = chart.Series.Add(name2);
-                var name3 = ResManager.GetString("dataGridViewColumn3");
-                if (!string.IsNullOrEmpty(name3))
-                    seriesCredit = chart.Series.Add(name3);
+                var namePercent = ResManager.GetString("dataGridViewColumn2");
+                if (!string.IsNullOrEmpty(namePercent))
+                    seriesPercent = chart.Series.Add(namePercent);
+                var nameCredit = ResManager.GetString("dataGridViewColumn3");
+                if (!string.IsNullOrEmpty(nameCredit))
+                    seriesCredit = chart.Series.Add(nameCredit);
             }
             foreach (var item in records)
             {
                 if (item.Number > 0 && item.Remaining > 0)
                 {
-                    seriesPay?.Points.Add(new DataPoint((int)item.Number, (double)item.Pay));
                     seriesPercent?.Points.Add(new DataPoint((int)item.Number, (double)item.Percent));
                     seriesCredit?.Points.Add(new DataPoint((int)item.Number, (double)item.Credit));
                 }
