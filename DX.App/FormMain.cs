@@ -1,15 +1,14 @@
-﻿using System;
+﻿using DevExpress.XtraBars;
+using DevExpress.XtraCharts;
+using LibCredit;
+using LibWin;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
-using DevExpress.XtraBars;
-using DevExpress.XtraCharts;
-using LibCredit;
-using LibWin;
 // ReSharper disable ResourceItemNotResolved
 
 [assembly: NeutralResourcesLanguage("en-US")]
