@@ -17,12 +17,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DX.App", "DX.App\DX.App.csproj", "{EDF9FA90-EEB1-405F-9E7E-B80A399A9552}"
 	ProjectSection(ProjectDependencies) = postProject
 		{BF7F7557-CEB7-4407-9980-0A39CB6CD08F} = {BF7F7557-CEB7-4407-9980-0A39CB6CD08F}
+		{B7C4537A-0D32-4A35-98B7-C97B1B61E0E8} = {B7C4537A-0D32-4A35-98B7-C97B1B61E0E8}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6AA9F8A4-2667-4F0A-BF2C-48C7EA8575F3}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.md = CHANGELOG.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibDevExpress", "LibDevExpress\LibDevExpress.csproj", "{B7C4537A-0D32-4A35-98B7-C97B1B61E0E8}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -52,6 +55,10 @@ Global
 		{EDF9FA90-EEB1-405F-9E7E-B80A399A9552}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDF9FA90-EEB1-405F-9E7E-B80A399A9552}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDF9FA90-EEB1-405F-9E7E-B80A399A9552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7C4537A-0D32-4A35-98B7-C97B1B61E0E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7C4537A-0D32-4A35-98B7-C97B1B61E0E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7C4537A-0D32-4A35-98B7-C97B1B61E0E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7C4537A-0D32-4A35-98B7-C97B1B61E0E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

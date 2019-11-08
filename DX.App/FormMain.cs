@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraCharts;
 using LibCredit;
+using LibDevExpress;
 using LibWin;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Resources;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 // ReSharper disable ResourceItemNotResolved
 
@@ -16,12 +18,11 @@ namespace DX.App
 {
     public partial class FormMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        #region Private fields and properties
+        #region Private fields & properties & helpers
 
+        private DevExpressHelper _devHelper = DevExpressHelper.Instance;
         private Process _proc = Process.Instance;
         private ResourceManager ResManager { get; set; }
-        private uint LastLocalization { get; set; } = 0;
-        private uint LastViewType { get; set; }  = 0;
 
         #endregion
 

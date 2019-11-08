@@ -115,7 +115,7 @@
             this.repositoryItemAnnualInterest,
             this.repositoryItemCreditTermMonths,
             this.repositoryCreditTermYears});
-            this.ribbonControl.Size = new System.Drawing.Size(790, 143);
+            this.ribbonControl.Size = new System.Drawing.Size(790, 158);
             // 
             // barEditItemLocalization
             // 
@@ -342,6 +342,7 @@
             // 
             // ribbonPageGroupCalc
             // 
+            this.ribbonPageGroupCalc.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroupCalc.ItemLinks.Add(this.fieldMoneyCost);
             this.ribbonPageGroupCalc.ItemLinks.Add(this.fieldMoneyOwn);
             this.ribbonPageGroupCalc.ItemLinks.Add(this.fieldMoneyCredit);
@@ -352,7 +353,6 @@
             this.ribbonPageGroupCalc.ItemLinks.Add(this.barButtonItemClear);
             this.ribbonPageGroupCalc.ItemLinks.Add(this.barButtonItemCalcExe);
             this.ribbonPageGroupCalc.Name = "ribbonPageGroupCalc";
-            this.ribbonPageGroupCalc.ShowCaptionButton = false;
             this.ribbonPageGroupCalc.Text = "Calculate";
             // 
             // ribbonPageSettings
@@ -364,11 +364,11 @@
             // 
             // ribbonPageGroupSettings
             // 
+            this.ribbonPageGroupSettings.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroupSettings.ItemLinks.Add(this.barEditItemLocalization);
             this.ribbonPageGroupSettings.ItemLinks.Add(this.barEditItemViewType);
             this.ribbonPageGroupSettings.ItemsLayout = DevExpress.XtraBars.Ribbon.RibbonPageGroupItemsLayout.ThreeRows;
             this.ribbonPageGroupSettings.Name = "ribbonPageGroupSettings";
-            this.ribbonPageGroupSettings.ShowCaptionButton = false;
             this.ribbonPageGroupSettings.Text = "Settings";
             // 
             // chartControl
@@ -379,7 +379,7 @@
             this.chartControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl.Legend.Name = "Default Legend";
             this.chartControl.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
-            this.chartControl.Location = new System.Drawing.Point(0, 143);
+            this.chartControl.Location = new System.Drawing.Point(0, 158);
             this.chartControl.Name = "chartControl";
             series1.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Numerical;
             series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
@@ -394,18 +394,17 @@
         series1,
         series2,
         series3};
-            this.chartControl.SeriesTemplate.SeriesColorizer = null;
-            this.chartControl.Size = new System.Drawing.Size(790, 452);
+            this.chartControl.Size = new System.Drawing.Size(790, 437);
             this.chartControl.TabIndex = 1;
             // 
             // gridControl
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl.Location = new System.Drawing.Point(0, 143);
+            this.gridControl.Location = new System.Drawing.Point(0, 158);
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(790, 452);
+            this.gridControl.Size = new System.Drawing.Size(790, 437);
             this.gridControl.TabIndex = 3;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -515,8 +514,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 595);
-            this.Controls.Add(this.gridControl);
             this.Controls.Add(this.chartControl);
+            this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonControl);
             this.Name = "FormMain";
             this.Ribbon = this.ribbonControl;

@@ -4,18 +4,13 @@ namespace LibWin
 {
     public sealed class Process
     {
-        #region Design pattern "Singleton".
+        #region Design pattern "Singleton"
 
         private static readonly Lazy<Process> _instance = new Lazy<Process>(() => new Process());
         public static Process Instance { get { return _instance.Value; } }
         private Process()
         {
-            Init();
-        }
-
-        public void Init()
-        {
-            //
+            // 
         }
 
         #endregion

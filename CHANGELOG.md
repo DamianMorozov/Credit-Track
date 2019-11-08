@@ -2,9 +2,11 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [0.2.31] - 2019-11-08
+## [0.2.33] - 2019-11-08
 ### Updated
 - DX.App using DevExpress 19.2.3
+### Added
+- LibDevExpress
 
 ## [0.2.22] - 2019-10-28
 ### Updated

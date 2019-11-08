@@ -49,6 +49,9 @@
     <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="LibDevExpress">
+      <HintPath>..\LibDevExpress\bin\Debug\LibDevExpress.dll</HintPath>
+    </Reference>
     <Reference Include="LibWin">
       <HintPath>..\LibWin\bin\Debug\LibWin.dll</HintPath>
     </Reference>
@@ -99,6 +102,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\LibCredit\LibCredit.projitems" Label="Shared" Condition="Exists('..\LibCredit\LibCredit.projitems')" />
   <PropertyGroup>
