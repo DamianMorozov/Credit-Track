@@ -356,6 +356,21 @@ namespace LibDevExpress
             }
         }
 
+        public void GridControl_SetDataSource(DevExpress.XtraGrid.GridControl gridControl, object source)
+        {
+            if (gridControl.InvokeRequired)
+            {
+                gridControl.Invoke(new Action(() =>
+                {
+                    gridControl.DataSource = source;
+                }));
+            }
+            else
+            {
+                gridControl.DataSource = source;
+            }
+        }
+
         #endregion
     }
 }

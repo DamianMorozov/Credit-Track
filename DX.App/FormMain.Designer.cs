@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideStackedBarSeriesView sideBySideStackedBarSeriesView1 = new DevExpress.XtraCharts.SideBySideStackedBarSeriesView();
-            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideStackedBarSeriesView sideBySideStackedBarSeriesView2 = new DevExpress.XtraCharts.SideBySideStackedBarSeriesView();
-            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideStackedBarSeriesView sideBySideStackedBarSeriesView3 = new DevExpress.XtraCharts.SideBySideStackedBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideStackedBarSeriesView sideBySideStackedBarSeriesView4 = new DevExpress.XtraCharts.SideBySideStackedBarSeriesView();
+            DevExpress.XtraCharts.Series series5 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideStackedBarSeriesView sideBySideStackedBarSeriesView5 = new DevExpress.XtraCharts.SideBySideStackedBarSeriesView();
+            DevExpress.XtraCharts.Series series6 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideStackedBarSeriesView sideBySideStackedBarSeriesView6 = new DevExpress.XtraCharts.SideBySideStackedBarSeriesView();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barEditItemLocalization = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemLocalization = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.barEditItemViewType = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemViewType = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.barEditItemLocalization = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemLocalization = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.fieldMoneyCost = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemMoney = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.fieldAnnualInterest = new DevExpress.XtraBars.BarEditItem();
@@ -56,7 +56,6 @@
             this.barButtonItemCalcExe = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageCalc = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupCalc = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageSettings = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.chartControl = new DevExpress.XtraCharts.ChartControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -67,20 +66,20 @@
             this.gridColumnCredit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnRemaining = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLocalization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemViewType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLocalization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMoney)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemAnnualInterest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCreditTermMonths)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryCreditTermYears)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
@@ -91,8 +90,8 @@
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
             this.ribbonControl.SearchEditItem,
-            this.barEditItemLocalization,
             this.barEditItemViewType,
+            this.barEditItemLocalization,
             this.fieldMoneyCost,
             this.fieldAnnualInterest,
             this.fieldCreditTermMonths,
@@ -106,8 +105,7 @@
             this.ribbonControl.MaxItemId = 13;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPageCalc,
-            this.ribbonPageSettings});
+            this.ribbonPageCalc});
             this.ribbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLocalization,
             this.repositoryItemViewType,
@@ -116,29 +114,6 @@
             this.repositoryItemCreditTermMonths,
             this.repositoryCreditTermYears});
             this.ribbonControl.Size = new System.Drawing.Size(790, 158);
-            // 
-            // barEditItemLocalization
-            // 
-            this.barEditItemLocalization.AutoFillWidthInMenu = DevExpress.Utils.DefaultBoolean.False;
-            this.barEditItemLocalization.Caption = "Localization";
-            this.barEditItemLocalization.CaptionAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.barEditItemLocalization.Edit = this.repositoryItemLocalization;
-            this.barEditItemLocalization.EditWidth = 92;
-            this.barEditItemLocalization.Id = 1;
-            this.barEditItemLocalization.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barEditItemLocalization.ImageOptions.SvgImage")));
-            this.barEditItemLocalization.Name = "barEditItemLocalization";
-            this.barEditItemLocalization.EditValueChanged += new System.EventHandler(this.barEditItemLocalization_EditValueChanged);
-            // 
-            // repositoryItemLocalization
-            // 
-            this.repositoryItemLocalization.AutoHeight = false;
-            this.repositoryItemLocalization.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLocalization.Items.AddRange(new object[] {
-            "English",
-            "Russian"});
-            this.repositoryItemLocalization.Name = "repositoryItemLocalization";
-            this.repositoryItemLocalization.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // barEditItemViewType
             // 
@@ -162,6 +137,29 @@
             "Table"});
             this.repositoryItemViewType.Name = "repositoryItemViewType";
             this.repositoryItemViewType.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // barEditItemLocalization
+            // 
+            this.barEditItemLocalization.AutoFillWidthInMenu = DevExpress.Utils.DefaultBoolean.False;
+            this.barEditItemLocalization.Caption = "Localization";
+            this.barEditItemLocalization.CaptionAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.barEditItemLocalization.Edit = this.repositoryItemLocalization;
+            this.barEditItemLocalization.EditWidth = 92;
+            this.barEditItemLocalization.Id = 1;
+            this.barEditItemLocalization.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barEditItemLocalization.ImageOptions.SvgImage")));
+            this.barEditItemLocalization.Name = "barEditItemLocalization";
+            this.barEditItemLocalization.EditValueChanged += new System.EventHandler(this.barEditItemLocalization_EditValueChanged);
+            // 
+            // repositoryItemLocalization
+            // 
+            this.repositoryItemLocalization.AutoHeight = false;
+            this.repositoryItemLocalization.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLocalization.Items.AddRange(new object[] {
+            "English",
+            "Russian"});
+            this.repositoryItemLocalization.Name = "repositoryItemLocalization";
+            this.repositoryItemLocalization.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             // 
             // fieldMoneyCost
             // 
@@ -336,7 +334,8 @@
             // ribbonPageCalc
             // 
             this.ribbonPageCalc.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupCalc});
+            this.ribbonPageGroupCalc,
+            this.ribbonPageGroupSettings});
             this.ribbonPageCalc.Name = "ribbonPageCalc";
             this.ribbonPageCalc.Text = "Calc";
             // 
@@ -355,13 +354,6 @@
             this.ribbonPageGroupCalc.Name = "ribbonPageGroupCalc";
             this.ribbonPageGroupCalc.Text = "Calculate";
             // 
-            // ribbonPageSettings
-            // 
-            this.ribbonPageSettings.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupSettings});
-            this.ribbonPageSettings.Name = "ribbonPageSettings";
-            this.ribbonPageSettings.Text = "Settings";
-            // 
             // ribbonPageGroupSettings
             // 
             this.ribbonPageGroupSettings.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
@@ -373,27 +365,27 @@
             // 
             // chartControl
             // 
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControl.Diagram = xyDiagram1;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl.Diagram = xyDiagram2;
             this.chartControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl.Legend.Name = "Default Legend";
             this.chartControl.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
             this.chartControl.Location = new System.Drawing.Point(0, 158);
             this.chartControl.Name = "chartControl";
-            series1.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Numerical;
-            series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
-            series1.LegendName = "Default Legend";
-            series1.Name = "Series 1";
-            series1.View = sideBySideStackedBarSeriesView1;
-            series2.Name = "Series 2";
-            series2.View = sideBySideStackedBarSeriesView2;
-            series3.Name = "Series 3";
-            series3.View = sideBySideStackedBarSeriesView3;
+            series4.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Numerical;
+            series4.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series4.LegendName = "Default Legend";
+            series4.Name = "Series 1";
+            series4.View = sideBySideStackedBarSeriesView4;
+            series5.Name = "Series 2";
+            series5.View = sideBySideStackedBarSeriesView5;
+            series6.Name = "Series 3";
+            series6.View = sideBySideStackedBarSeriesView6;
             this.chartControl.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1,
-        series2,
-        series3};
+        series4,
+        series5,
+        series6};
             this.chartControl.Size = new System.Drawing.Size(790, 437);
             this.chartControl.TabIndex = 1;
             // 
@@ -523,19 +515,19 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.Resize += new System.EventHandler(this.FormMain_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLocalization)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemViewType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLocalization)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMoney)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemAnnualInterest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCreditTermMonths)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryCreditTermYears)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideStackedBarSeriesView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
@@ -548,9 +540,7 @@
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageCalc;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSettings;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupCalc;
-        private DevExpress.XtraBars.BarEditItem barEditItemLocalization;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemLocalization;
         private DevExpress.XtraCharts.ChartControl chartControl;
         private DevExpress.XtraBars.BarEditItem barEditItemViewType;
@@ -564,7 +554,6 @@
         private DevExpress.XtraBars.BarEditItem fieldMoneyOwn;
         private DevExpress.XtraBars.BarEditItem fieldMoneyCredit;
         private DevExpress.XtraBars.BarEditItem fieldCreditTermYears;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageSettings;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCalc;
         private DevExpress.XtraBars.BarButtonItem barButtonItemClear;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCalcExe;
@@ -576,6 +565,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnPercent;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnCredit;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnRemaining;
+        private DevExpress.XtraBars.BarEditItem barEditItemLocalization;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSettings;
     }
 }
 

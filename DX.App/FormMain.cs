@@ -47,7 +47,7 @@ namespace DX.App
 
         private void FormMain_Resize(object sender, EventArgs e)
         {
-
+            //
         }
 
         private void SetLocalization(int localization)
@@ -65,7 +65,6 @@ namespace DX.App
             Text = ResManager.GetString("formCaption");
 
             ribbonPageGroupSettings.Text = ResManager.GetString("labelSettings");
-            ribbonPageSettings.Text = ResManager.GetString("labelSettings");
             ribbonPageCalc.Text = ResManager.GetString("labelCalc");
             ribbonPageGroupCalc.Text = ResManager.GetString("buttonCalc");
 
@@ -172,25 +171,27 @@ namespace DX.App
             PrintBody(records);
         }
 
-        private void PrintBody(IReadOnlyList<ClassRecord> records)
+        private Task PrintBody(IReadOnlyList<ClassRecord> records)
         {
-            switch (GetBarEditItemIndex(barEditItemViewType))
+            return Task.Run(() =>
             {
-                // Chart
-                case 1:
-                    PrintBodyChart(records);
-                    break;
-                // Table
-                default:
-                    PrintBodyTable(records);
-                    break;
-            }
+                switch (GetBarEditItemIndex(barEditItemViewType))
+                {
+                    // Chart
+                    case 1:
+                        PrintBodyChart(records);
+                        break;
+                    // Table
+                    default:
+                        PrintBodyTable(records);
+                        break;
+                }
+            });
         }
 
         private void PrintBodyTable(IReadOnlyList<ClassRecord> records)
         {
-            gridControl.DataSource = null;
-            gridControl.DataSource = records;
+            _devHelper.GridControl_SetDataSource(gridControl, records);
         }
 
         private void PrintBodyChart(IReadOnlyList<ClassRecord> records)
