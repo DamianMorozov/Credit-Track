@@ -20,9 +20,9 @@ namespace DX.App
     {
         #region Private fields & properties & helpers
 
-        private DevExpressHelper _devHelper = DevExpressHelper.Instance;
-        private Process _proc = Process.Instance;
-        private ResourceManager ResManager { get; set; }
+        private readonly DevExpressHelper _devHelper = DevExpressHelper.Instance;
+        private readonly Process _proc = Process.Instance;
+        private ResourceManager _resManager { get; set; }
 
         #endregion
 
@@ -53,7 +53,7 @@ namespace DX.App
         private void SetLocalization(int localization)
         {
             string[] cultureNames = { "en-US", "ru-RU" };
-            ResManager = new ResourceManager("DX.App.Resources.strings", Assembly.GetExecutingAssembly());
+            _resManager = new ResourceManager("DX.App.Resources.strings", Assembly.GetExecutingAssembly());
             var cultureName = cultureNames[0];
             if (localization >= 0 && localization <= 1)
                 cultureName = cultureNames[localization];
@@ -62,47 +62,47 @@ namespace DX.App
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
 
-            Text = ResManager.GetString("formCaption");
+            Text = _resManager.GetString("formCaption");
 
-            ribbonPageGroupSettings.Text = ResManager.GetString("labelSettings");
-            ribbonPageCalc.Text = ResManager.GetString("labelCalc");
-            ribbonPageGroupCalc.Text = ResManager.GetString("buttonCalc");
+            ribbonPageGroupSettings.Text = _resManager.GetString("labelSettings");
+            ribbonPageCalc.Text = _resManager.GetString("labelCalc");
+            ribbonPageGroupCalc.Text = _resManager.GetString("buttonCalc");
 
             // Settings - Localization.
-            barEditItemLocalization.Caption = ResManager.GetString("labelLocalization");
+            barEditItemLocalization.Caption = _resManager.GetString("labelLocalization");
             barEditItemLocalization.EditValueChanged -= barEditItemLocalization_EditValueChanged;
             var i = GetBarEditItemIndex(barEditItemLocalization);
-            repositoryItemLocalization.Items[0] = ResManager.GetString("comboBoxLocalization0");
-            repositoryItemLocalization.Items[1] = ResManager.GetString("comboBoxLocalization1");
+            repositoryItemLocalization.Items[0] = _resManager.GetString("comboBoxLocalization0");
+            repositoryItemLocalization.Items[1] = _resManager.GetString("comboBoxLocalization1");
             barEditItemLocalization.EditValue = repositoryItemLocalization.Items[i];
             barEditItemLocalization.EditValueChanged += barEditItemLocalization_EditValueChanged;
             // Settings - ViewType.
-            barEditItemViewType.Caption = ResManager.GetString("labelViewType");
+            barEditItemViewType.Caption = _resManager.GetString("labelViewType");
             barEditItemViewType.EditValueChanged -= barEditItemViewType_EditValueChanged;
-            var j = GetBarEditItemIndex(barEditItemViewType);
-            repositoryItemViewType.Items[0] = ResManager.GetString("comboBoxViewType0");
-            repositoryItemViewType.Items[1] = ResManager.GetString("comboBoxViewType1");
+            //var j = GetBarEditItemIndex(barEditItemViewType);
+            repositoryItemViewType.Items[0] = _resManager.GetString("comboBoxViewType0");
+            repositoryItemViewType.Items[1] = _resManager.GetString("comboBoxViewType1");
             barEditItemViewType.EditValue = repositoryItemViewType.Items[i];
             barEditItemViewType.EditValueChanged += barEditItemViewType_EditValueChanged;
 
             // Calculate.
-            fieldMoneyCost.Caption = ResManager.GetString("labelMoneyCost");
-            fieldMoneyOwn.Caption = ResManager.GetString("labelMoneyOwn");
-            fieldMoneyCredit.Caption = ResManager.GetString("labelMoneyCredit");
+            fieldMoneyCost.Caption = _resManager.GetString("labelMoneyCost");
+            fieldMoneyOwn.Caption = _resManager.GetString("labelMoneyOwn");
+            fieldMoneyCredit.Caption = _resManager.GetString("labelMoneyCredit");
 
-            fieldAnnualInterest.Caption = ResManager.GetString("labelAnnualInterest");
-            fieldCreditTermMonths.Caption = ResManager.GetString("labelCreditTermMonthsFull");
-            fieldCreditTermYears.Caption = ResManager.GetString("labelCreditTermYearsFull");
+            fieldAnnualInterest.Caption = _resManager.GetString("labelAnnualInterest");
+            fieldCreditTermMonths.Caption = _resManager.GetString("labelCreditTermMonthsFull");
+            fieldCreditTermYears.Caption = _resManager.GetString("labelCreditTermYearsFull");
 
-            barButtonItemCalc.Caption = ResManager.GetString("buttonCalc");
-            barButtonItemClear.Caption = ResManager.GetString("buttonClear");
-            barButtonItemCalcExe.Caption = ResManager.GetString("buttonCalcExe");
+            barButtonItemCalc.Caption = _resManager.GetString("buttonCalc");
+            barButtonItemClear.Caption = _resManager.GetString("buttonClear");
+            barButtonItemCalcExe.Caption = _resManager.GetString("buttonCalcExe");
 
-            gridView.Columns[0].Caption = ResManager.GetString("dataGridViewColumn0");
-            gridView.Columns[1].Caption = ResManager.GetString("dataGridViewColumn1");
-            gridView.Columns[2].Caption = ResManager.GetString("dataGridViewColumn2");
-            gridView.Columns[3].Caption = ResManager.GetString("dataGridViewColumn3");
-            gridView.Columns[4].Caption = ResManager.GetString("dataGridViewColumn4");
+            gridView.Columns[0].Caption = _resManager.GetString("dataGridViewColumn0");
+            gridView.Columns[1].Caption = _resManager.GetString("dataGridViewColumn1");
+            gridView.Columns[2].Caption = _resManager.GetString("dataGridViewColumn2");
+            gridView.Columns[3].Caption = _resManager.GetString("dataGridViewColumn3");
+            gridView.Columns[4].Caption = _resManager.GetString("dataGridViewColumn4");
         }
 
         #endregion
@@ -122,13 +122,10 @@ namespace DX.App
             if (sender is BarEditItem editItem)
             {
                 DevExpress.XtraEditors.Controls.ComboBoxItemCollection items = null;
-                if (sender is BarEditItem barEditItem)
-                {
-                    if (barEditItem.Name.Equals(barEditItemLocalization.Name))
-                        items = repositoryItemLocalization.Items;
-                    if (barEditItem.Name.Equals(barEditItemViewType.Name))
-                        items = repositoryItemViewType.Items;
-                }
+                if (editItem.Name.Equals(barEditItemLocalization.Name))
+                    items = repositoryItemLocalization.Items;
+                if (editItem.Name.Equals(barEditItemViewType.Name))
+                    items = repositoryItemViewType.Items;
                 if (items != null && items.Count > 0)
                 {
                     foreach (var item in items)
@@ -160,18 +157,18 @@ namespace DX.App
             // Check-list.
             if (creditAmount <= 0 || annualInterest <= 0 || creditTerm <= 0)
             {
-                MessageBox.Show(ResManager.GetString("messageErrorZeroInFields"),
-                    ResManager.GetString("formCaption"));
+                MessageBox.Show(_resManager.GetString("messageErrorZeroInFields"),
+                    _resManager.GetString("formCaption"));
                 return;
             }
 
             var calc = ClassCalc.Instance;
             var records = calc.Exec(creditAmount, annualInterest, creditTerm, true);
 
-            PrintBody(records);
+            PrintBodyAsync(records);
         }
 
-        private Task PrintBody(IReadOnlyList<ClassRecord> records)
+        private Task PrintBodyAsync(IReadOnlyList<ClassRecord> records)
         {
             return Task.Run(() =>
             {
@@ -202,12 +199,12 @@ namespace DX.App
 
             Series seriesPercent = null;
             Series seriesCredit = null;
-            if (ResManager != null)
+            if (_resManager != null)
             {
-                var namePercent = ResManager.GetString("dataGridViewColumn2");
+                var namePercent = _resManager.GetString("dataGridViewColumn2");
                 if (!string.IsNullOrEmpty(namePercent))
                     chartControl.Series.Add(seriesPercent = new Series(namePercent, ViewType.Bar));
-                var nameCredit = ResManager.GetString("dataGridViewColumn3");
+                var nameCredit = _resManager.GetString("dataGridViewColumn3");
                 if (!string.IsNullOrEmpty(nameCredit))
                     chartControl.Series.Add(seriesCredit = new Series(nameCredit, ViewType.Bar));
             }

@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
+// ReSharper disable IdentifierTypo
+// ReSharper disable UnusedMember.Global
 
 namespace LibDevExpress
 {
     public sealed class DevExpressHelper
     {
-        #region Design pattern "Singleton"
+        #region Design pattern "Lazy Singleton"
 
         private static readonly Lazy<DevExpressHelper> _instance = new Lazy<DevExpressHelper>(() => new DevExpressHelper());
-        public static DevExpressHelper Instance { get { return _instance.Value; } }
-        private DevExpressHelper()
-        {
-            //
-        }
+        public static DevExpressHelper Instance => _instance.Value;
+        private DevExpressHelper() { }
 
         #endregion
 
@@ -283,32 +282,32 @@ namespace LibDevExpress
         {
             if (gridControl.InvokeRequired)
             {
+                var control = gridControl;
                 gridControl.Invoke(new Action(() =>
                 {
-                    gridControl.Dispose();
+                    control.Dispose();
                 }));
             }
             else
             {
                 gridControl.Dispose();
             }
-            gridControl = null;
         }
 
         public void ChartControl_Dispose(DevExpress.XtraCharts.ChartControl chartControl)
         {
             if (chartControl.InvokeRequired)
             {
+                var control = chartControl;
                 chartControl.Invoke(new Action(() =>
                 {
-                    chartControl.Dispose();
+                    control.Dispose();
                 }));
             }
             else
             {
                 chartControl.Dispose();
             }
-            chartControl = null;
         }
 
         public void ChartControl_EndInit(DevExpress.XtraCharts.ChartControl chartControl)

@@ -23,6 +23,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6AA9F8A4-2667-4F0A-BF2C-48C7EA8575F3}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.md = CHANGELOG.md
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibDevExpress", "LibDevExpress\LibDevExpress.csproj", "{B7C4537A-0D32-4A35-98B7-C97B1B61E0E8}"

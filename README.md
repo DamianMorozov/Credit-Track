@@ -1,24 +1,22 @@
-# Credit-track. Кредит-трек.
+# Credit-track (credit calc).
 
-----------------------------------------------------------------------------------------------------
+## Solution
+- Console.App
+- ConsoleDX.App
+- ConsoleLibCredit
+- ConsoleLibDevExpress
+- LibWin
+- WinForms.App
 
-## WinForms.App
+## [Microsoft Chart Controls.](https://www.nuget.org/packages/Microsoft.Chart.Controls/)
 
-[Microsoft Chart Controls.](https://www.nuget.org/packages/Microsoft.Chart.Controls/)
+![](Assets/Console.App.png?raw=true)
 
-Package Manager
+![](Assets/DX.App.Chart.png?raw=true)
 
-`> Install-Package Microsoft.Chart.Controls -Version 4.7.2046`
+![](Assets/DX.App.Table.png?raw=true)
 
-.NET CLI
+![](Assets/WinForms.App.Chart.png?raw=true)
 
-`> dotnet add package Microsoft.Chart.Controls --version 4.7.2046`
+![](Assets/WinForms.App.Table.png?raw=true)
 
-Paket CLI
-
-`> paket add Microsoft.Chart.Controls --version 4.7.2046`
-
-
-[Microsoft Chart Controls for Microsoft .NET Framework 3.5.](https://www.microsoft.com/en-US/download/details.aspx?id=14422)
-
-[Формула и расчет аннуитетного платежа по кредиту](http://www.temabiz.com/finterminy/ap-formula-i-raschet-annuitetnogo-platezha.html)

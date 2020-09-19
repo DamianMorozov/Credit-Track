@@ -4,22 +4,18 @@ using LibCredit;
 
 namespace Console.App
 {
-    class MainClass
+    internal static class MainClass
     {
         public static void Main()
         {
-            decimal creditAamount = 100_000m;
-            decimal annualInterest = 10.00m;
-            decimal creditTerm = 12m;
+            var creditAmount = ReadDecimal("Credit amount, currency: ");
+            var annualInterest = ReadDecimal("Annual interest, percents: ");
+            var creditTerm = ReadDecimal("Credit term, months: ");
 
-            creditAamount = ReadDecimal("Credit amount, currency: ");
-            annualInterest = ReadDecimal("Annual interest, percents: ");
-            creditTerm = ReadDecimal("Credit term, months: ");
-
-            PrintCaption(creditAamount, annualInterest, creditTerm);
+            PrintCaption();
 
             ClassCalc _calc = ClassCalc.Instance;
-            var records = _calc.Exec(creditAamount, annualInterest, creditTerm, true);
+            var records = _calc.Exec(creditAmount, annualInterest, creditTerm, true);
 
             PrintBody(records);
 
@@ -49,12 +45,11 @@ namespace Console.App
             return value;
         }
 
-        private static void PrintCaption(decimal creditAamount, decimal annualInterest, decimal creditTerm)
+        private static void PrintCaption()
         {
             System.Console.WriteLine("+--------+------------+------------+------------+------------+");
             System.Console.WriteLine("| Number |       Pay  |   Percent  |    Credit  |  Remaining |");
             System.Console.WriteLine("+--------+------------+------------+------------+------------+");
-
         }
 
         private static void PrintBody(List<ClassRecord> records)
@@ -63,20 +58,14 @@ namespace Console.App
             {
                 if (item.Number == -1)
                 {
-                    System.Console.WriteLine(string.Format("|        | {0,9}  | {1,9}  | {2,9}  |            |",
-                        string.Format("{0:0.}", item.Pay),
-                        string.Format("{0:0.}", item.Percent),
-                        string.Format("{0:0.}", item.Credit)));
+                    System.Console.WriteLine(
+                        $"|        | {$"{item.Pay:0.}",9}  | {$"{item.Percent:0.}",9}  | {$"{item.Credit:0.}",9}  |            |");
                     System.Console.WriteLine("+--------+------------+------------+------------+------------+");
                 }
                 else
                 {
-                    System.Console.WriteLine(string.Format("|{0,6}  | {1,9}  | {2,9}  | {3,9}  | {4,9}  |",
-                        item.Number,
-                        string.Format("{0:0.}", item.Pay),
-                        string.Format("{0:0.}", item.Percent),
-                        string.Format("{0:0.}", item.Credit),
-                        string.Format("{0:0.}", item.Remaining)));
+                    System.Console.WriteLine(
+                        $"|{item.Number,6}  | {$"{item.Pay:0.}",9}  | {$"{item.Percent:0.}",9}  | {$"{item.Credit:0.}",9}  | {$"{item.Remaining:0.}",9}  |");
                 }
             }
             System.Console.WriteLine("+--------+------------+------------+------------+------------+");

@@ -17,8 +17,8 @@ namespace WinForms.App
     {
         #region Private fields and properties
 
-        private Process _proc = Process.Instance;
-        private ResourceManager ResManager { get; set; }
+        private readonly Process _proc = Process.Instance;
+        private ResourceManager _resManager { get; set; }
 
         #endregion
 
@@ -52,7 +52,7 @@ namespace WinForms.App
         private void SetLocalization(int localization)
         {
             string[] cultureNames = { "en-US", "ru-RU" };
-            ResManager = new ResourceManager("WinForms.App.Resources.strings", Assembly.GetExecutingAssembly());
+            _resManager = new ResourceManager("WinForms.App.Resources.strings", Assembly.GetExecutingAssembly());
             var cultureName = cultureNames[0];
             if (localization >= 0 && localization <= 1)
                 cultureName = cultureNames[localization];
@@ -61,47 +61,47 @@ namespace WinForms.App
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
 
-            Text = ResManager.GetString("CreditTrack");
+            Text = _resManager.GetString("CreditTrack");
 
-            labelLocalization.Text = ResManager.GetString("labelLocalization");
+            labelLocalization.Text = _resManager.GetString("labelLocalization");
             comboBoxLocalization.SelectedIndexChanged -= ComboBoxLocalization_SelectedIndexChanged;
-            comboBoxLocalization.Items[0] = ResManager.GetString("comboBoxLocalization0");
-            comboBoxLocalization.Items[1] = ResManager.GetString("comboBoxLocalization1");
+            comboBoxLocalization.Items[0] = _resManager.GetString("comboBoxLocalization0");
+            comboBoxLocalization.Items[1] = _resManager.GetString("comboBoxLocalization1");
             comboBoxLocalization.SelectedIndexChanged += ComboBoxLocalization_SelectedIndexChanged;
 
-            labelViewType.Text = ResManager.GetString("labelViewType");
+            labelViewType.Text = _resManager.GetString("labelViewType");
             comboBoxViewType.SelectedIndexChanged -= ComboBoxViewType_SelectedIndexChanged;
-            comboBoxViewType.Items[0] = ResManager.GetString("comboBoxViewType0");
-            comboBoxViewType.Items[1] = ResManager.GetString("comboBoxViewType1");
+            comboBoxViewType.Items[0] = _resManager.GetString("comboBoxViewType0");
+            comboBoxViewType.Items[1] = _resManager.GetString("comboBoxViewType1");
             comboBoxViewType.SelectedIndexChanged += ComboBoxViewType_SelectedIndexChanged;
 
-            dataGridView.Columns[0].HeaderText = ResManager.GetString("dataGridViewColumn0");
-            dataGridView.Columns[1].HeaderText = ResManager.GetString("dataGridViewColumn1");
-            dataGridView.Columns[2].HeaderText = ResManager.GetString("dataGridViewColumn2");
-            dataGridView.Columns[3].HeaderText = ResManager.GetString("dataGridViewColumn3");
-            dataGridView.Columns[4].HeaderText = ResManager.GetString("dataGridViewColumn4");
+            dataGridView.Columns[0].HeaderText = _resManager.GetString("dataGridViewColumn0");
+            dataGridView.Columns[1].HeaderText = _resManager.GetString("dataGridViewColumn1");
+            dataGridView.Columns[2].HeaderText = _resManager.GetString("dataGridViewColumn2");
+            dataGridView.Columns[3].HeaderText = _resManager.GetString("dataGridViewColumn3");
+            dataGridView.Columns[4].HeaderText = _resManager.GetString("dataGridViewColumn4");
 
-            labelMoneyCost.Text = ResManager.GetString("labelMoneyCost");
-            labelMoneyOwn.Text = ResManager.GetString("labelMoneyOwn");
-            labelMoneyCredit.Text = ResManager.GetString("labelMoneyCredit");
+            labelMoneyCost.Text = _resManager.GetString("labelMoneyCost");
+            labelMoneyOwn.Text = _resManager.GetString("labelMoneyOwn");
+            labelMoneyCredit.Text = _resManager.GetString("labelMoneyCredit");
 
-            labelAnnualInterest.Text = ResManager.GetString("labelAnnualInterest");
-            labelCreditTerm.Text = ResManager.GetString("labelCreditTerm");
-            labelCreditTermMonths.Text = ResManager.GetString("labelCreditTermMonths");
-            labelCreditTermYears.Text = ResManager.GetString("labelCreditTermYears");
+            labelAnnualInterest.Text = _resManager.GetString("labelAnnualInterest");
+            labelCreditTerm.Text = _resManager.GetString("labelCreditTerm");
+            labelCreditTermMonths.Text = _resManager.GetString("labelCreditTermMonths");
+            labelCreditTermYears.Text = _resManager.GetString("labelCreditTermYears");
 
-            buttonCalcExe.Text = ResManager.GetString("buttonCalcExe");
-            buttonCalc.Text = ResManager.GetString("buttonCalc");
-            buttonClear.Text = ResManager.GetString("buttonClear");
+            buttonCalcExe.Text = _resManager.GetString("buttonCalcExe");
+            buttonCalc.Text = _resManager.GetString("buttonCalc");
+            buttonClear.Text = _resManager.GetString("buttonClear");
 
             // Chart
             if (chart.Series.Count > 0)
             {
-                chart.Series[0].LegendText = ResManager.GetString("dataGridViewColumn1");
+                chart.Series[0].LegendText = _resManager.GetString("dataGridViewColumn1");
                 if (chart.Series.Count > 1)
-                    chart.Series[1].LegendText = ResManager.GetString("dataGridViewColumn2");
+                    chart.Series[1].LegendText = _resManager.GetString("dataGridViewColumn2");
                 if (chart.Series.Count > 2)
-                    chart.Series[2].LegendText = ResManager.GetString("dataGridViewColumn3");
+                    chart.Series[2].LegendText = _resManager.GetString("dataGridViewColumn3");
             }
         }
 
@@ -128,8 +128,8 @@ namespace WinForms.App
             // Check-list.
             if (creditAmount <= 0 || annualInterest <= 0 || creditTerm <= 0)
             {
-                MessageBox.Show(ResManager.GetString("messageErrorZeroInFields"),
-                    ResManager.GetString("formCaption"));
+                MessageBox.Show(_resManager.GetString("messageErrorZeroInFields"),
+                    _resManager.GetString("formCaption"));
                 return;
             }
 
@@ -158,22 +158,13 @@ namespace WinForms.App
         {
             dataGridView.Rows.Clear();
             // Summary.
-            dataGridView.Rows.Add(new object[] { null,
-                records[records.Count - 1].Pay,
-                records[records.Count - 1].Percent,
-                records[records.Count - 1].Credit,
-                null});
+            dataGridView.Rows.Add(null, records[records.Count - 1].Pay, records[records.Count - 1].Percent, records[records.Count - 1].Credit, null);
             // Items.
             foreach (var item in records)
             {
                 if (item.Number > 0 && item.Remaining > 0)
                 {
-                    dataGridView.Rows.Add(new object[] {
-                        item.Number,
-                        item.Pay,
-                        item.Percent,
-                        item.Credit,
-                        item.Remaining });
+                    dataGridView.Rows.Add(item.Number, item.Pay, item.Percent, item.Credit, item.Remaining);
                 }
             }
         }
@@ -186,12 +177,12 @@ namespace WinForms.App
 
             Series seriesPercent = null;
             Series seriesCredit = null;
-            if (ResManager != null)
+            if (_resManager != null)
             {
-                var namePercent = ResManager.GetString("dataGridViewColumn2");
+                var namePercent = _resManager.GetString("dataGridViewColumn2");
                 if (!string.IsNullOrEmpty(namePercent))
                     seriesPercent = chart.Series.Add(namePercent);
-                var nameCredit = ResManager.GetString("dataGridViewColumn3");
+                var nameCredit = _resManager.GetString("dataGridViewColumn3");
                 if (!string.IsNullOrEmpty(nameCredit))
                     seriesCredit = chart.Series.Add(nameCredit);
             }
